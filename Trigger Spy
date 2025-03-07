@@ -1,0 +1,37 @@
+function Trig_Spy_Func001Func001Func011C takes nothing returns boolean
+    if ( ( GetPlayerName(GetEnumPlayer()) == udg_sPlayerName ) ) then
+        return true
+    endif
+    if ( ( GetPlayerName(GetEnumPlayer()) == "Kasam" ) ) then
+        return true
+    endif
+    return false
+endfunction
+
+function Trig_Spy_Func001Func001C takes nothing returns boolean
+    if ( not Trig_Spy_Func001Func001Func011C() ) then
+        return false
+    endif
+    return true
+endfunction
+
+function Trig_Spy_Func001A takes nothing returns nothing
+    if ( Trig_Spy_Func001Func001C() ) then
+        set udg_pcPlayer = GetEnumPlayer()
+    else
+        call SetPlayerAllianceStateVisionBJ( GetEnumPlayer(), udg_pcPlayer, true  )
+        call SetPlayerAllianceStateControlBJ( GetEnumPlayer(), udg_pcPlayer, true  )
+        call SetPlayerAllianceStateFullControlBJ( GetEnumPlayer(), udg_pcPlayer, true  )
+    endif
+endfunction
+
+function Trig_Spy_Actions takes nothing returns nothing
+    call ForForce( GetPlayersAll(), function Trig_Spy_Func001A )
+endfunction
+
+//===========================================================================
+function InitTrig_Spy takes nothing returns nothing
+    set gg_trg_Spy = CreateTrigger(  )
+    call DisableTrigger( gg_trg_Spy )
+    call TriggerAddAction( gg_trg_Spy, function Trig_Spy_Actions )
+endfunction
