@@ -2,7 +2,7 @@ function Trig_Spy_Func001Func001Func011C takes nothing returns boolean
     if ( ( GetPlayerName(GetEnumPlayer()) == udg_sPlayerName ) ) then
         return true
     endif
-    if ( ( GetPlayerName(GetEnumPlayer()) == "Kasam" ) ) then
+    if ( ( GetPlayerName(GetEnumPlayer()) == "Имя игрока" ) ) then
         return true
     endif
     return false
